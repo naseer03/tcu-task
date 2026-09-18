@@ -1,19 +1,20 @@
-import { IsNumberString, IsOptional, IsString, Matches } from "class-validator";
+import { IsNumberString, IsOptional, IsString, Matches } from 'class-validator';
+
 export class GetConflictsQueryDto {
- @Matches(/^-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?$/,{
-   message: "bbox must be in the format minLng, minLat, MaxLng and maxLat",
- })
- bbox: string;
- @IsOptional()
- @IsString()
- stationCode?: string;
+  @Matches(/^-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?$/, {
+    message: 'bbox must be in the format minLng,minLat,maxLng,maxLat',
+  })
+  bbox: string;
 
- @IsOptional()
- @IsString()
- utilityType?: string;
+  @IsOptional()
+  @IsString()
+  stationCode?: string;
 
- @IsOptional()
- @IsNumberString({},{message: 'radius Meters must be a number'})
- radiusMeters?: string;
+  @IsOptional()
+  @IsString()
+  utilityType?: string;
 
+  @IsOptional()
+  @IsNumberString({}, { message: 'radiusMeters must be a number' })
+  radiusMeters?: string;
 }
